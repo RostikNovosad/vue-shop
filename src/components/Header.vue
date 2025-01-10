@@ -9,7 +9,7 @@ const checkCart = computed(() => {
   return cart.value.length > 0 ? `${totalCart()} $` : 'Корзина';
 });
 const checkFavorite = computed(() => {
-  return favorite.value.length > 0 ? favorite.value.length : 'Улюблене';
+  return favorite.value.length > 0 ? `Вподобані: ${favorite.value.length}` : 'Улюблене';
 });
 </script>
 
@@ -38,10 +38,10 @@ const checkFavorite = computed(() => {
         </p>
       </RouterLink>
 
-      <li class="flex items-center gap-2.5">
+      <!-- <li class="flex items-center gap-2.5">
         <img src="/profile.svg" alt="profile-icon" />
         <p class="text-slate-500 font-normal hidden sm:block">Профіль</p>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>

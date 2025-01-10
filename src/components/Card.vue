@@ -8,13 +8,15 @@ const props = defineProps({
   image: String,
   price: Number,
   favorite: Array,
+  isRemove: Boolean,
+  remove: Function,
 });
 
 const isVisible = ref(false);
 const favoriteCheck = computed(() => {
   return favorite.value.some((item) => item.id === props.id) ? '/like-2.svg' : '/like-1.svg';
 });
-
+const removeButton = ref(props.isRemove);
 const changeImage = () => {
   isVisible.value = !isVisible.value;
 
@@ -49,7 +51,12 @@ const addToFavorite = inject('addToFavorite');
     <h4 class="flex-auto">{{ title }}</h4>
     <div class="flex justify-between">
       <p class="font-bold">{{ price }} $</p>
-      <button @click="buttonHandler" class="relative">
+      <!-- button remove from cart -->
+      <button class="" v-if="removeButton">
+        <img @click="remove(item)" src="/remove.svg" alt="remove from cart" class="" />
+      </button>
+      <!-- button add to cart -->
+      <button v-else @click="buttonHandler" class="relative">
         <img src="/plus.svg" alt="" class="relative" />
         <img
           src="/checked.svg"

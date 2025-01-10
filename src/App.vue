@@ -8,6 +8,7 @@ let favorite = ref([]);
 
 function addToCart(item) {
   cart.value.push(item);
+  cart.value.sort((a, b) => a.price - b.price);
   console.log('cart: ', cart.value);
 }
 
@@ -39,7 +40,7 @@ provide('totalCart', totalCart);
       class="min-h-screen-minus-16 sm:min-h-screen-minus-48 md:min-h-screen-minus-80 lg:min-h-screen-minus-112 bg-white h-full rounded-xl md:rounded-2xl"
     >
       <Header />
-      <div class="p-3 md:p-10">
+      <div class="p-3 md:p-10 min-h-full">
         <RouterView />
       </div>
     </div>
