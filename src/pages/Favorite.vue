@@ -1,9 +1,14 @@
 <script setup>
-import CardList from '@/components/CardList.vue';
+import { onMounted, inject } from 'vue';
+import FavoriteList from '@/components/FavoriteList.vue';
+const favorite = inject('favorite');
+
+onMounted(() => {
+  console.log(favorite.value);
+});
 </script>
 
 <template>
-  <div class="">
-    <h1>Улюблене</h1>
-  </div>
+  <h2 class="text-2xl font-bold mb-10">Улюблене</h2>
+  <FavoriteList />
 </template>

@@ -11,11 +11,11 @@ function addToCart(item) {
   console.log('cart: ', cart.value);
 }
 
-const addToFavorite = (id) => {
-  if (!favorite.value.includes(id)) {
-    favorite.value.push(id);
+const addToFavorite = (item) => {
+  if (!favorite.value.includes(item)) {
+    favorite.value.push(item);
   } else {
-    favorite.value.splice(favorite.value.indexOf(id), 1);
+    favorite.value.splice(favorite.value.indexOf(item), 1);
   }
 };
 

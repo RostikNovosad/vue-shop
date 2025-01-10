@@ -1,5 +1,5 @@
 <script setup>
-import { computed, inject, ref } from 'vue';
+import { computed, inject, onMounted, ref } from 'vue';
 
 const props = defineProps({
   item: Object,
@@ -12,7 +12,7 @@ const props = defineProps({
 
 const isVisible = ref(false);
 const favoriteCheck = computed(() => {
-  return favorite.value.includes(props.id) ? '/like-2.svg' : '/like-1.svg';
+  return favorite.value.some((item) => item.id === props.id) ? '/like-2.svg' : '/like-1.svg';
 });
 
 const changeImage = () => {
@@ -38,7 +38,7 @@ const addToFavorite = inject('addToFavorite');
   <div
     class="flex flex-col gap-3 px-5 py-4 border border-slate-200 rounded-3xl hover:scale-105 ease-in duration-150 relative"
   >
-    <button @click="addToFavorite(id)" class="absolute top-4 left-4 z-50">
+    <button @click="addToFavorite(item)" class="absolute top-4 left-4 z-50">
       <img
         :src="favoriteCheck"
         alt="like icon"
